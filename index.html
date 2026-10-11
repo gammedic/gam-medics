@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAM MEDICS | Digital Documents</title>
+  <meta name="description" content="GAM MEDICS - Nunua na pata nyaraka za elimu, medical notes na past papers.">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7f6;
+      color: #18332c;
+    }
+
+    header {
+      background: #075e45;
+      color: white;
+      padding: 22px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      margin-bottom: 0;
+    }
+
+    nav {
+      background: #064c39;
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 38px 18px;
+      text-align: center;
+      background: white;
+    }
+
+    .hero h2 {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      line-height: 1.6;
+      color: #53655e;
+    }
+
+    .search {
+      width: 100%;
+      max-width: 500px;
+      padding: 13px;
+      border: 1px solid #cbd8d2;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 22px 15px;
+    }
+
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+      margin-bottom: 25px;
+    }
+
+    .categories button {
+      background: white;
+      border: 1px solid #0a7654;
+      color: #075e45;
+      padding: 10px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .categories button.active,
+    .categories button:hover {
+      background: #075e45;
+      color: white;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px #0000000b;
+    }
+
+    .icon {
+      font-size: 42px;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #63716b;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .price {
+      font-size: 19px;
+      font-weight: bold;
+      color: #087b50;
+    }
+
+    .btn {
+      display: inline-block;
+      border: none;
+      border-radius: 7px;
+      padding: 12px 15px;
+      background: #087b50;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .notice {
+      background: #e5f4ec;
+      padding: 18px;
+      border-radius: 10px;
+      margin-top: 28px;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 30px;
+      background: #073e30;
+      color: white;
+      text-align: center;
+      padding: 24px 15px;
+      line-height: 1.8;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>GAM MEDICS</h1>
+  <p>Your Digital Documents Marketplace</p>
+</header>
+
+<nav>
+  <a href="#home">Nyumbani</a>
+  <a href="#documents">Nyaraka</a>
+  <a href="#about">Kuhusu Sisi</a>
+</nav>
+
+<section class="hero" id="home">
+  <h2>Nyaraka Zako, Mahali Pamoja</h2>
+  <p>
+    Pata medical notes, past papers, e-books na nyaraka
+    nyingine za kidijitali kwa urahisi.
+  </p>
+
+  <input
+    class="search"
+    id="search"
+    type="search"
+    placeholder="Tafuta nyaraka..."
+    aria-label="Tafuta nyaraka"
+  >
+</section>
+
+<main id="documents">
+
+  <h2 style="text-align:center">Chagua Aina ya Nyaraka</h2>
+
+  <div class="categories">
+    <button class="active" data-category="all">Zote</button>
+    <button data-category="medical">Medical Notes</button>
+    <button data-category="pastpapers">Past Papers</button>
+    <button data-category="ebooks">E-books</button>
+    <button data-category="other">Nyingine</button>
+  </div>
+
+  <div class="products">
+
+    <article class="card" data-category="medical">
+      <div class="icon">🩺</div>
+      <h3>Medical Notes</h3>
+      <p>Maelezo ya masomo ya afya kwa ajili ya kujisomea.</p>
+      <div class="price">Bei itawekwa</div>
+      <button class="btn" onclick="requestDocument('Medical Notes')">
+        Omba Nyaraka
+      </button>
+    </article>
+
+    <article class="card" data-category="pastpapers">
+      <div class="icon">📚</div>
+      <h3>Past Examination Papers</h3>
+      <p>Maswali ya mitihani ya kujifanyia mazoezi.</p>
+      <div class="price">Bei itawekwa</div>
+      <button class="btn" onclick="requestDocument('Past Papers')">
+        Omba Nyaraka
+      </button>
+    </article>
+
+    <article class="card" data-category="ebooks">
+      <div class="icon">📖</div>
+      <h3>Digital E-books</h3>
+      <p>Vitabu vya kidijitali kwa kujifunza na kuongeza maarifa.</p>
+      <div class="price">Bei itawekwa</div>
+      <button class="btn" onclick="requestDocument('E-books')">
+        Omba Nyaraka
+      </button>
+    </article>
+
+    <article class="card" data-category="other">
+      <div class="icon">📄</div>
+      <h3>Other Documents</h3>
+      <p>Nyaraka nyingine za kidijitali ambazo zinaruhusiwa kuuzwa.</p>
+      <div class="price">Bei itawekwa</div>
+      <button class="btn" onclick="requestDocument('Other Documents')">
+        Omba Nyaraka
+      </button>
+    </article>
+
+  </div>
+
+  <div class="notice">
+    <strong>Karibu GAM MEDICS!</strong><br>
+    Huu ni ukurasa wa mwanzo wa tovuti yetu.
+    Mfumo wa malipo, kupakia PDF na kupakua baada ya
+    kuthibitisha malipo utaongezwa katika hatua zinazofuata.
+  </div>
+
+</main>
+
+<section id="about" style="text-align:center;padding:20px">
+  <h2>Kuhusu GAM MEDICS</h2>
+  <p>Jukwaa la nyaraka za kidijitali kwa kujifunza na kupata maarifa.</p>
+</section>
+
+<footer>
+  <strong>GAM MEDICS</strong><br>
+  Digital Documents Marketplace<br>
+  Tanzania 🇹🇿<br>
+  &copy; <span id="year"></span> GAM MEDICS
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll("[data-category]");
+  const cards = document.querySelectorAll(".card");
+  const search = document.getElementById("search");
+
+  let selectedCategory = "all";
+
+  function filterDocuments() {
+    const query = search.value.toLowerCase().trim();
+
+    cards.forEach(card => {
+      const matchesCategory =
+        selectedCategory === "all" ||
+        card.dataset.category === selectedCategory;
+
+      const matchesSearch =
+        card.innerText.toLowerCase().includes(query);
+
+      card.classList.toggle(
+        "hidden",
+        !(matchesCategory && matchesSearch)
+      );
+    });
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      selectedCategory = button.dataset.category;
+
+      buttons.forEach(item => item.classList.remove("active"));
+      button.classList.add("active");
+
+      filterDocuments();
+    });
+  });
+
+  search.addEventListener("input", filterDocuments);
+
+  function requestDocument(name) {
+    alert(
+      "Umechagua: " + name +
+      ". Mfumo wa kuagiza na kulipia nyaraka utaongezwa baadaye."
+    );
+  }
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+  </html>
